@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
     num_aleatorio1:
-        path: /mi-aleatorio
-        controller: App\controller\AleatorioContorller::index
+        path: /mi-asignaturas
+        controller: App\controller\AsignaturasController::index
         

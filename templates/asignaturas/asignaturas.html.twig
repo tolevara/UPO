@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hola AsignaturasControles!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hola {{ controller_name }}! ✅</h1>
+
+    <p>Esta página es un ejemplo de cómo se puede utilizar el controlador de asignaturas.</p>
+    <ul>
+        <li>Your controller at <code>/var/www/html/UPO/src/Controller/AsignaturaController.php</code></li>
+        <li>Your template at <code>/var/www/html/UPO/templates/asignaturas/index.html.twig</code></li>
+    </ul> 
+</div>
+
+<section class="container mt-5">
+
+    <h2>Listado de Asignaturas</h2>
+
+    <table class="table table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Creditos</th>
+                <th>Aula</th>
+        </thead>
+        <tbody>
+
+        {% for aula in aulas %}
+                <tr>
+                    <td>{{ asignaturas.id }}</td>
+                    <td>{{ asignaturas.titulo }}</td>
+                    <td>{{ asignaturas.creditos }}</td>
+                    <td>{{ asignaturas.aula }}</td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay asignaturas disponibles.</td>
+                </tr>
+ 
+
+            {% endfor %}
+        </tbody>
+    </table>
+</section>     
+
+{% endblock %}

@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-use App\Entity\Asignaturas;
+use App\Entity\Profesores;
 use Doctrine\Persistence\ManagerRegistry;
 
- class AsignaturasController extends AbstractController
+ class ProfesoresController extends AbstractController
 {
-    #[Route('/crea-asignaturas', name: 'crea-asignaturas')]
-    public function crearAsignaturas(ManagerRegistry $doctrine): Response
+    #[Route('/crea-profesores', name: 'crea-profesores')]
+    public function crearProfesores(ManagerRegistry $doctrine): Response
     {
         $entiyManager = $doctrine->getManager();
 
@@ -25,6 +25,7 @@ use Doctrine\Persistence\ManagerRegistry;
         $entiyManager->flush();
 
 
+      
 
         return new Response('Guardado Autor con ID -> ' . $autor->getId());
              
