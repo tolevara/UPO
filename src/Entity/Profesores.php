@@ -12,8 +12,8 @@ class Profesores
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(nullable: true)]
+    private ?bool $genero = null;
 
     #[ORM\Column(length: 9)]
     private ?string $nif = null;
@@ -21,8 +21,7 @@ class Profesores
     #[ORM\Column(length: 50)]
     private ?string $nombre = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $genero = null;
+    
 
     /**
      * @var Collection<int, Asignaturas>

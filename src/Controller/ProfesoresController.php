@@ -12,8 +12,8 @@ use Doctrine\Persistence\ManagerRegistry;
 
 final class ProfesoresController extends AbstractController
 {
-    #[Route('/ver-profesores/{nif}', name: 'ver_profesor')]
-    public function verProfesores(ManagerRegistry $doctrine, $nif): Response
+    #[Route('/intro-profesores/{nif}/{nonbre}/{genero}', name: 'intro_profesor')]
+    public function introProfesores(ManagerRegistry $doctrine, $nif): Response
     {
         $entityManager = $doctrine->getManager();
         $profesores = $entityManager->getRepository(Profesores::class)->findAll();

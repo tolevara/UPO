@@ -21,7 +21,7 @@ class Asignaturas
     private ?int $creditos = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 1, nullable: true)]
-    private ?string $aula = null;
+    private ?float $aula = null;
 
     #[ORM\Column(length: 9)]
     private ?string $nif = null;

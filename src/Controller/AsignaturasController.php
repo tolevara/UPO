@@ -5,10 +5,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Asignaturas;
 use App\Entity\Profesores;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\AsignaturasRepository;
 
 
 class AsignaturasController extends AbstractController
@@ -39,20 +42,20 @@ class AsignaturasController extends AbstractController
                 "id" => 1,
                 "titulo" => "Matemáticas",
                 "creditos" => 6,
-                "aula" => 1,
+                "aula" => 1.1,
             ],
 
             "asignatura2" => [
                 "id" => 2,
                 "titulo" => "Lengua",
                 "creditos" => 5,
-                "aula" => 2,
+                "aula" => 2.2,
             ],
             "asignatura3" => [
                 "id" => 3,
                 "titulo" => "Historia",
                 "creditos" => 4,
-                "aula" => 3,
+                "aula" => 3.3,
             ]
         );
         
@@ -61,6 +64,8 @@ class AsignaturasController extends AbstractController
             $asignatura->setId($asignatura['id']);
             $asignatura->setTitulo($asignatura['titulo']);
             $asignatura->setCreditos($asignatura['creditos']);
+            $asignatura->setAula($asignatura['aula']);
+            $asignatura->setNif($asignatura['nif']);
             $aula = $entityManager->getRepository(Profesores::class)
             ->findOneBy(['id' => $registro['aula']]);
             $asignatura->setAula($aula);
@@ -73,12 +78,12 @@ class AsignaturasController extends AbstractController
         return new Response('Guardado Asignatura con éxito.');
     }
 
-    #[Route('/actualizar-asignatura', name: 'actualizar_asignatura')]
-    public function actualizarAsignatura(Request $request, Asignaturas $repo, EntityManagerInterface $em): Response
+    public function actualizarAsignatura(Request $request, AsignaturasRepository $repo, EntityManagerInterface $em): Response
     {
         $titulo = $request->query->get('titulo');
         $creditos = $request->query->get('creditos');
         $aula = $request->query->get('aula');
+        $nif = $request->query->get('nif');
     
         $asignatura = $repo->findOneBy(['titulo' => $titulo]);
     
